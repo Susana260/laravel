@@ -15,3 +15,14 @@
     <a href="{{url('contatos/')}}" class="btn btn-secondary">Voltar</a>
     {{Form::close()}}
 @endsection
+
+@param int $id
+@return \illuminate\Http\Responde
+
+public function destroy($id)
+{
+    $contato = Contato::find($id);
+    $contato ->delete;
+    Session::flash('mensagem','Contato excluído com sucesso');
+    return redirect(url('contatos/'));
+}
